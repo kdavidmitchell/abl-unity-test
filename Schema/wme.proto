@@ -1,0 +1,39 @@
+syntax = "proto3";
+option csharp_namespace = "WME";
+
+// A definition for an ABL WME.
+// Next field id: 6
+message WME {
+    // Whether a given WME corresponds to a bot or the player.
+    enum Type {
+        PLAYER = 0;
+        BOT = 1;
+    }
+    Type type = 1;
+    // The current x coordinate of the entity associated with this WME.
+    float x = 2;
+    // The current y coordinate of the entity associated with this WME.
+    float y = 3;
+    // The current z coordinate of the entity associated with this WME.
+    float z = 4;
+    // The ID of the entity associated with this WME, if there is one.
+    int32 id = 5;
+}
+
+// A request that can be sent to the game engine to receive WMEs.
+// Next field id: 2
+message WMERequest {
+    // Whether this request concerns the bot entities or player.
+    enum Type {
+        PLAYER = 0;
+        BOT = 1;
+    }
+    Type type = 1;
+}
+
+// A packet of WMEs that can be sent to ABL upon request.
+// Next field id: 2
+message WMEResponse {
+    // Any number of WMEs.
+    repeated WME wmes = 1;
+}
