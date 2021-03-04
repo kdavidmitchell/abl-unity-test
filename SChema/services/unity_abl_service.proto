@@ -1,0 +1,19 @@
+syntax = "proto3";
+package generated_pb;
+option csharp_namespace = "unity_abl_service_pb";
+option java_outer_classname = "unity_abl_service_pb";
+
+import "data.proto";
+
+// The Unity-ABL service definition.
+service Unity_ABL_Handler {
+    // Sends an action packet from ABL to the game engine.
+    rpc Send_Action (stream Data) returns (Data_Response);
+    // Sends a WME packet from the game engine to ABL.
+    rpc Send_WME (stream Data) returns (Data_Response);
+}
+
+// The response definition for data.
+message Data_Response {
+    string response = 1;
+}

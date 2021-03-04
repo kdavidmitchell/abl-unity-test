@@ -1,0 +1,23 @@
+syntax = "proto3";
+package generated_pb;
+option csharp_namespace = "data_pb";
+option java_outer_classname = "data_pb";
+
+// A definition for a piece of data that is passed between ABL and Unity.
+// Next field id: 5
+message Datum {
+    // The ID of the entity associated with this datum.
+    int32 id = 1;
+    // The values associated with the datum, if any, in string format, e.g. "10", "true", "#FF7F50".
+    repeated string values = 2;
+    // The data type of the above values, in string format, e.g. "int32", "bool".
+    string data_type = 3;
+    // Any metadata concerning this data, in string format, e.g. "MoveLeft", "ChangeColor", "x", "color".
+    string metadata = 4;
+}
+
+// A definition allowing for data to be packaged in a single message.
+// Next field id: 2
+message Data {
+    repeated Datum data = 1;
+}
