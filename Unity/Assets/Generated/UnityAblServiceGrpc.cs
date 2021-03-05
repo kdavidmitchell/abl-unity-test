@@ -11,9 +11,9 @@ namespace unity_abl_service_pb {
   /// <summary>
   /// The Unity-ABL service definition.
   /// </summary>
-  public static partial class Unity_ABL_Handler
+  public static partial class UnityABLHandler
   {
-    static readonly string __ServiceName = "generated_pb.Unity_ABL_Handler";
+    static readonly string __ServiceName = "generated_pb.UnityABLHandler";
 
     static void __Helper_SerializeMessage(global::Google.Protobuf.IMessage message, grpc::SerializationContext context)
     {
@@ -46,21 +46,14 @@ namespace unity_abl_service_pb {
     }
 
     static readonly grpc::Marshaller<global::data_pb.Data> __Marshaller_generated_pb_Data = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::data_pb.Data.Parser));
-    static readonly grpc::Marshaller<global::unity_abl_service_pb.Data_Response> __Marshaller_generated_pb_Data_Response = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::unity_abl_service_pb.Data_Response.Parser));
+    static readonly grpc::Marshaller<global::unity_abl_service_pb.DataResponse> __Marshaller_generated_pb_DataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::unity_abl_service_pb.DataResponse.Parser));
 
-    static readonly grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.Data_Response> __Method_Send_Action = new grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.Data_Response>(
+    static readonly grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.DataResponse> __Method_SendData = new grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.DataResponse>(
         grpc::MethodType.ClientStreaming,
         __ServiceName,
-        "Send_Action",
+        "SendData",
         __Marshaller_generated_pb_Data,
-        __Marshaller_generated_pb_Data_Response);
-
-    static readonly grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.Data_Response> __Method_Send_WME = new grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.Data_Response>(
-        grpc::MethodType.ClientStreaming,
-        __ServiceName,
-        "Send_WME",
-        __Marshaller_generated_pb_Data,
-        __Marshaller_generated_pb_Data_Response);
+        __Marshaller_generated_pb_DataResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -68,121 +61,88 @@ namespace unity_abl_service_pb {
       get { return global::unity_abl_service_pb.UnityAblServiceReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Base class for server-side implementations of Unity_ABL_Handler</summary>
-    [grpc::BindServiceMethod(typeof(Unity_ABL_Handler), "BindService")]
-    public abstract partial class Unity_ABL_HandlerBase
+    /// <summary>Base class for server-side implementations of UnityABLHandler</summary>
+    [grpc::BindServiceMethod(typeof(UnityABLHandler), "BindService")]
+    public abstract partial class UnityABLHandlerBase
     {
       /// <summary>
-      /// Sends an action packet from ABL to the game engine.
+      /// Sends a data packet.
       /// </summary>
       /// <param name="requestStream">Used for reading requests from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::unity_abl_service_pb.Data_Response> Send_Action(grpc::IAsyncStreamReader<global::data_pb.Data> requestStream, grpc::ServerCallContext context)
-      {
-        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
-      }
-
-      /// <summary>
-      /// Sends a WME packet from the game engine to ABL.
-      /// </summary>
-      /// <param name="requestStream">Used for reading requests from the client.</param>
-      /// <param name="context">The context of the server-side call handler being invoked.</param>
-      /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::unity_abl_service_pb.Data_Response> Send_WME(grpc::IAsyncStreamReader<global::data_pb.Data> requestStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::unity_abl_service_pb.DataResponse> SendData(grpc::IAsyncStreamReader<global::data_pb.Data> requestStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
     }
 
-    /// <summary>Client for Unity_ABL_Handler</summary>
-    public partial class Unity_ABL_HandlerClient : grpc::ClientBase<Unity_ABL_HandlerClient>
+    /// <summary>Client for UnityABLHandler</summary>
+    public partial class UnityABLHandlerClient : grpc::ClientBase<UnityABLHandlerClient>
     {
-      /// <summary>Creates a new client for Unity_ABL_Handler</summary>
+      /// <summary>Creates a new client for UnityABLHandler</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public Unity_ABL_HandlerClient(grpc::ChannelBase channel) : base(channel)
+      public UnityABLHandlerClient(grpc::ChannelBase channel) : base(channel)
       {
       }
-      /// <summary>Creates a new client for Unity_ABL_Handler that uses a custom <c>CallInvoker</c>.</summary>
+      /// <summary>Creates a new client for UnityABLHandler that uses a custom <c>CallInvoker</c>.</summary>
       /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
-      public Unity_ABL_HandlerClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      public UnityABLHandlerClient(grpc::CallInvoker callInvoker) : base(callInvoker)
       {
       }
       /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
-      protected Unity_ABL_HandlerClient() : base()
+      protected UnityABLHandlerClient() : base()
       {
       }
       /// <summary>Protected constructor to allow creation of configured clients.</summary>
       /// <param name="configuration">The client configuration.</param>
-      protected Unity_ABL_HandlerClient(ClientBaseConfiguration configuration) : base(configuration)
+      protected UnityABLHandlerClient(ClientBaseConfiguration configuration) : base(configuration)
       {
       }
 
       /// <summary>
-      /// Sends an action packet from ABL to the game engine.
+      /// Sends a data packet.
       /// </summary>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.Data_Response> Send_Action(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.DataResponse> SendData(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return Send_Action(new grpc::CallOptions(headers, deadline, cancellationToken));
+        return SendData(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Sends an action packet from ABL to the game engine.
+      /// Sends a data packet.
       /// </summary>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.Data_Response> Send_Action(grpc::CallOptions options)
+      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.DataResponse> SendData(grpc::CallOptions options)
       {
-        return CallInvoker.AsyncClientStreamingCall(__Method_Send_Action, null, options);
-      }
-      /// <summary>
-      /// Sends a WME packet from the game engine to ABL.
-      /// </summary>
-      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-      /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.Data_Response> Send_WME(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return Send_WME(new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      /// <summary>
-      /// Sends a WME packet from the game engine to ABL.
-      /// </summary>
-      /// <param name="options">The options for the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.Data_Response> Send_WME(grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncClientStreamingCall(__Method_Send_WME, null, options);
+        return CallInvoker.AsyncClientStreamingCall(__Method_SendData, null, options);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
-      protected override Unity_ABL_HandlerClient NewInstance(ClientBaseConfiguration configuration)
+      protected override UnityABLHandlerClient NewInstance(ClientBaseConfiguration configuration)
       {
-        return new Unity_ABL_HandlerClient(configuration);
+        return new UnityABLHandlerClient(configuration);
       }
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-    public static grpc::ServerServiceDefinition BindService(Unity_ABL_HandlerBase serviceImpl)
+    public static grpc::ServerServiceDefinition BindService(UnityABLHandlerBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_Send_Action, serviceImpl.Send_Action)
-          .AddMethod(__Method_Send_WME, serviceImpl.Send_WME).Build();
+          .AddMethod(__Method_SendData, serviceImpl.SendData).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
     /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
     /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-    public static void BindService(grpc::ServiceBinderBase serviceBinder, Unity_ABL_HandlerBase serviceImpl)
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, UnityABLHandlerBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_Send_Action, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::data_pb.Data, global::unity_abl_service_pb.Data_Response>(serviceImpl.Send_Action));
-      serviceBinder.AddMethod(__Method_Send_WME, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::data_pb.Data, global::unity_abl_service_pb.Data_Response>(serviceImpl.Send_WME));
+      serviceBinder.AddMethod(__Method_SendData, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::data_pb.Data, global::unity_abl_service_pb.DataResponse>(serviceImpl.SendData));
     }
 
   }
