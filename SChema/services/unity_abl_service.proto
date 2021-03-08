@@ -1,0 +1,17 @@
+syntax = "proto3";
+package generated_pb;
+option csharp_namespace = "unity_abl_service_pb";
+option java_outer_classname = "unity_abl_service_pb";
+
+import "data.proto";
+
+// The Unity-ABL service definition.
+service UnityABLHandler {
+    // Sends a data packet.
+    rpc SendData (stream Data) returns (DataResponse);
+}
+
+// The response definition for data.
+message DataResponse {
+    string response = 1;
+}

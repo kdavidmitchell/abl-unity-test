@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using WME;
 
 public class GameManager : MonoBehaviour
 {
@@ -60,32 +59,6 @@ public class GameManager : MonoBehaviour
         foreach (Bot b in Bots) {
             b.Position = b.gameObject.transform.position;
         }
-    }
-
-    // Generate an ABL WME based upon request.
-    private WMEResponse _generateWME(WMERequest req) {
-        WMEResponse res = new WMEResponse();
-        if (req.Type == 0) {
-            WME.WME playerWME = new WME.WME {
-                Type = WME.WME.Types.Type.Player,
-                X = PlayerPos.x,
-                Y = PlayerPos.y,
-                Z = PlayerPos.z,
-            };
-            res.Wmes.Add(playerWME);
-        } else {
-            foreach (Bot b in Bots) {
-                WME.WME botWME = new WME.WME {
-                    Type = WME.WME.Types.Type.Bot,
-                    X = b.Position.x,
-                    Y = b.Position.y,
-                    Z = b.Position.z,
-                    Id = b.Id,
-                };
-                res.Wmes.Add(botWME);
-            }
-        }
-        return res;
     }
 
     // Singleton implementation for this manager.
