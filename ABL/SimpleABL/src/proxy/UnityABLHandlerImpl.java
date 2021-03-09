@@ -7,10 +7,10 @@ import io.grpc.stub.StreamObserver;
 
 public class UnityABLHandlerImpl extends UnityABLHandlerImplBase {
 	@Override
-	  public void sendData(StreamObserver<DataResponse> responseObserver) {
-	    // You must use a builder to construct a new Protobuffer object
+	  public void sendData(Data request, StreamObserver<DataResponse> responseObserver) {
+	    // You must use a builder to construct a new protobuf object
 	    DataResponse response = DataResponse.newBuilder()
-	      .setResponse("Hello there, " + request.getName())
+	      .setResponse("Received: " + request.getDataList())
 	      .build();
 
 	    // Use responseObserver to send a single response back

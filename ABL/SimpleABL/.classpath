@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="grpc-protobuf-1.36.0.jar"/>
 	<classpathentry kind="lib" path="grpc-stub-1.36.0.jar"/>
 	<classpathentry kind="lib" path="protobuf-java-3.14.0.jar"/>
+	<classpathentry kind="lib" path="guava-30.1-jre.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
