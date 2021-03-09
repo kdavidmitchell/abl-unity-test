@@ -49,7 +49,7 @@ namespace unity_abl_service_pb {
     static readonly grpc::Marshaller<global::unity_abl_service_pb.DataResponse> __Marshaller_generated_pb_DataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::unity_abl_service_pb.DataResponse.Parser));
 
     static readonly grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.DataResponse> __Method_SendData = new grpc::Method<global::data_pb.Data, global::unity_abl_service_pb.DataResponse>(
-        grpc::MethodType.ClientStreaming,
+        grpc::MethodType.Unary,
         __ServiceName,
         "SendData",
         __Marshaller_generated_pb_Data,
@@ -68,10 +68,10 @@ namespace unity_abl_service_pb {
       /// <summary>
       /// Sends a data packet.
       /// </summary>
-      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
-      public virtual global::System.Threading.Tasks.Task<global::unity_abl_service_pb.DataResponse> SendData(grpc::IAsyncStreamReader<global::data_pb.Data> requestStream, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::unity_abl_service_pb.DataResponse> SendData(global::data_pb.Data request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -104,22 +104,46 @@ namespace unity_abl_service_pb {
       /// <summary>
       /// Sends a data packet.
       /// </summary>
+      /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
-      /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.DataResponse> SendData(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      /// <returns>The response received from the server.</returns>
+      public virtual global::unity_abl_service_pb.DataResponse SendData(global::data_pb.Data request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return SendData(new grpc::CallOptions(headers, deadline, cancellationToken));
+        return SendData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
       /// Sends a data packet.
       /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::unity_abl_service_pb.DataResponse SendData(global::data_pb.Data request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SendData, null, options, request);
+      }
+      /// <summary>
+      /// Sends a data packet.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::unity_abl_service_pb.DataResponse> SendDataAsync(global::data_pb.Data request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SendDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Sends a data packet.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
-      public virtual grpc::AsyncClientStreamingCall<global::data_pb.Data, global::unity_abl_service_pb.DataResponse> SendData(grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::unity_abl_service_pb.DataResponse> SendDataAsync(global::data_pb.Data request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncClientStreamingCall(__Method_SendData, null, options);
+        return CallInvoker.AsyncUnaryCall(__Method_SendData, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override UnityABLHandlerClient NewInstance(ClientBaseConfiguration configuration)
@@ -142,7 +166,7 @@ namespace unity_abl_service_pb {
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     public static void BindService(grpc::ServiceBinderBase serviceBinder, UnityABLHandlerBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_SendData, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::data_pb.Data, global::unity_abl_service_pb.DataResponse>(serviceImpl.SendData));
+      serviceBinder.AddMethod(__Method_SendData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::data_pb.Data, global::unity_abl_service_pb.DataResponse>(serviceImpl.SendData));
     }
 
   }
