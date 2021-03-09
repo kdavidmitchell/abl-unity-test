@@ -606,10 +606,10 @@ public final class unity_abl_service_pb {
     java.lang.String[] descriptorData = {
       "\n services/unity_abl_service.proto\022\014gene" +
       "rated_pb\032\ndata.proto\" \n\014DataResponse\022\020\n\010" +
-      "response\030\001 \001(\t2O\n\017UnityABLHandler\022<\n\010Sen" +
+      "response\030\001 \001(\t2M\n\017UnityABLHandler\022:\n\010Sen" +
       "dData\022\022.generated_pb.Data\032\032.generated_pb" +
-      ".DataResponse(\001B-B\024unity_abl_service_pb\252" +
-      "\002\024unity_abl_service_pbb\006proto3"
+      ".DataResponseB-B\024unity_abl_service_pb\252\002\024" +
+      "unity_abl_service_pbb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

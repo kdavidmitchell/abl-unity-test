@@ -24,7 +24,7 @@ public final class UnityABLHandlerGrpc {
       fullMethodName = SERVICE_NAME + '/' + "SendData",
       requestType = generated_pb.data_pb.Data.class,
       responseType = generated_pb.unity_abl_service_pb.DataResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<generated_pb.data_pb.Data,
       generated_pb.unity_abl_service_pb.DataResponse> getSendDataMethod() {
     io.grpc.MethodDescriptor<generated_pb.data_pb.Data, generated_pb.unity_abl_service_pb.DataResponse> getSendDataMethod;
@@ -33,7 +33,7 @@ public final class UnityABLHandlerGrpc {
         if ((getSendDataMethod = UnityABLHandlerGrpc.getSendDataMethod) == null) {
           UnityABLHandlerGrpc.getSendDataMethod = getSendDataMethod =
               io.grpc.MethodDescriptor.<generated_pb.data_pb.Data, generated_pb.unity_abl_service_pb.DataResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SendData"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -104,16 +104,16 @@ public final class UnityABLHandlerGrpc {
      * Sends a data packet.
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<generated_pb.data_pb.Data> sendData(
+    public void sendData(generated_pb.data_pb.Data request,
         io.grpc.stub.StreamObserver<generated_pb.unity_abl_service_pb.DataResponse> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSendDataMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSendDataMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
             getSendDataMethod(),
-            io.grpc.stub.ServerCalls.asyncClientStreamingCall(
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 generated_pb.data_pb.Data,
                 generated_pb.unity_abl_service_pb.DataResponse>(
@@ -144,10 +144,10 @@ public final class UnityABLHandlerGrpc {
      * Sends a data packet.
      * </pre>
      */
-    public io.grpc.stub.StreamObserver<generated_pb.data_pb.Data> sendData(
+    public void sendData(generated_pb.data_pb.Data request,
         io.grpc.stub.StreamObserver<generated_pb.unity_abl_service_pb.DataResponse> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
-          getChannel().newCall(getSendDataMethod(), getCallOptions()), responseObserver);
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSendDataMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -167,6 +167,16 @@ public final class UnityABLHandlerGrpc {
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new UnityABLHandlerBlockingStub(channel, callOptions);
     }
+
+    /**
+     * <pre>
+     * Sends a data packet.
+     * </pre>
+     */
+    public generated_pb.unity_abl_service_pb.DataResponse sendData(generated_pb.data_pb.Data request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSendDataMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -184,6 +194,17 @@ public final class UnityABLHandlerGrpc {
     protected UnityABLHandlerFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       return new UnityABLHandlerFutureStub(channel, callOptions);
+    }
+
+    /**
+     * <pre>
+     * Sends a data packet.
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<generated_pb.unity_abl_service_pb.DataResponse> sendData(
+        generated_pb.data_pb.Data request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSendDataMethod(), getCallOptions()), request);
     }
   }
 
@@ -206,6 +227,10 @@ public final class UnityABLHandlerGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_SEND_DATA:
+          serviceImpl.sendData((generated_pb.data_pb.Data) request,
+              (io.grpc.stub.StreamObserver<generated_pb.unity_abl_service_pb.DataResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -216,9 +241,6 @@ public final class UnityABLHandlerGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SEND_DATA:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.sendData(
-              (io.grpc.stub.StreamObserver<generated_pb.unity_abl_service_pb.DataResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
