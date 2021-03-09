@@ -8,7 +8,7 @@ import "data.proto";
 // The Unity-ABL service definition.
 service UnityABLHandler {
     // Sends a data packet.
-    rpc SendData (stream Data) returns (DataResponse);
+    rpc SendData (Data) returns (DataResponse);
 }
 
 // The response definition for data.
